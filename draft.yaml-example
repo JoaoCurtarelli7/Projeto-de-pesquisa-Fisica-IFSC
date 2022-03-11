@@ -1,0 +1,37 @@
+models:
+  Models\ProfessorDisciplina:
+    professor_id: id foreign:professor.id
+    disciplina_id: id foreign:disciplina.id
+    timestamps: true
+    relationships:
+      belongsTo: Professor, Disciplina
+  Models\CursoDisciplina:
+    curso_id: id foreign:curso.id
+    professor_id: id foreign:professor.id
+    disciplina_id: id foreign:disciplina.id
+    timestamps: true
+    relationships:
+      belongsTo: Professor, Disciplina, Curso
+  Models\Matricula:
+    matricula: string:45
+    curso_id: id foreign:curso.id
+    turma_id: id foreign:turma.id
+    aluno_id: id foreign:aluno.id
+    timestamps: true
+    relationships:
+      belongsTo: Aluno, Disciplina, Curso
+  Models\DisciplinaTurma:
+    turma_id: id foreign:turma.id
+    disciplina_id: id foreign:disciplina.id
+    timestamps: true
+    relationships:
+      belongsTo: Turma, Disciplina
+  controllers:
+    ProfessorDisciplina:
+      resource
+    CursoDisciplina:
+      resource
+    Matricula:
+      resource
+    DisciplinaTurma:
+      resource
